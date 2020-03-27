@@ -151,13 +151,24 @@ var fn = function(){
 fn();
 
 //コンストラクタとインスタンス
-var Car = function(maker){
-    this.maker = maker;
+var AnimalColor = function(color){
+    this.color = color;
     this.description = function(){
-        console.log(this.maker + 'は車メーカーの一つです');
+        console.log(this.color + '色の動物');
     }
 };
 
-var toyota = new Car('toyota');
+var toyota = new AnimalColor('茶');
 toyota.description();
 
+//上のCarを継承
+var Animals = function(color, species){
+    this.color = color;
+    this.species = species;
+};
+
+Animals.prototype = new AnimalColor();
+var animal = new Animals('銀', '魚');
+
+animal.description();
+console.log('は' + animal.species);
